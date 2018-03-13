@@ -9,7 +9,7 @@ namespace Cities
         public static void Main(string[] args)
         {
             List<City> cities = CityDataImporter.LoadData();
-            /*
+            
             // TODO Swap out comparers as desired
             IComparer<City> comparer = new NameComparer();
 
@@ -33,7 +33,7 @@ namespace Cities
             PrintCities(cities);
 
             Console.ReadLine();
-            */
+         
             IComparer<City> comparerPopulation = new PopulationComparer();
             cities.Sort(comparerPopulation);
 
