@@ -8,7 +8,7 @@ namespace Cities
     {
         public static void Main(string[] args)
         {
-            List<City> cities = CityDataImporter.LoadData();
+             List<City> cities = CityDataImporter.LoadData();
             
             // TODO Swap out comparers as desired
             IComparer<City> comparer = new NameComparer();
@@ -41,7 +41,18 @@ namespace Cities
 
             Console.ReadLine();
 
-            
+            CompoundComparer comparerCompound = new CompoundComparer();
+
+
+            comparerCompound.Comparers.Add(new StateComparer());
+            //cities.Sort(comparerCompound);
+            comparerCompound.Comparers.Add(new PopulationComparer());
+            //cities.Sort(comparerCompound);
+            cities.Sort(comparerCompound);
+            PrintCities(cities);
+
+            Console.ReadLine();
+
         }
 
         private static void PrintCities(List<City> cities)
